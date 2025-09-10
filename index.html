@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Respiratory Airflow Modelling</title>
+    <title>Respiratory Airflow Modelling</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/responsive.css">
@@ -14,17 +14,10 @@
         <nav>
             <div class="logo">Respiratory Airflow Modelling</div>
             <ul class="nav-links">
-                
                 <li><a href="#home">Home</a></li>
-                
                 <li><a href="#services">Services</a></li>
-                
                 <li><a href="#about">About</a></li>
-                
-                <li><a href="#blog">Blog</a></li>
-                
                 <li><a href="#contact">Contact</a></li>
-                
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -34,222 +27,174 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <section id="home" class="hero">
-    
-    {{^hero.background_image}}
-    <div class="hero-background">
-    {{/hero.background_image}}
-    </div>
-    <div class="hero-content">
-        <h1>🌊 Revolutionary CFD Solutions for Respiratory Systems</h1>
-        <p>Expert computational fluid dynamics consultancy specializing in respiratory airflow modeling, medical device optimization, and advanced biomedical flow analysis.</p>
-        <a href="#contact" class="cta-button">Get Free Consultation</a>
-    </div>
-</section>\n<section id="services" class="services">
-    <div class="container">
-        <h2 class="section-title">Our Specialized Services</h2>
-        <p class="section-subtitle">Cutting-edge CFD analysis and modeling solutions tailored for respiratory and biomedical applications</p>
-        
-        <div class="services-grid">
-            
-            <div class="service-card">
-                
-                {{^image}}
-                <div class="service-icon">🫁</div>
-                {{/image}}
-                <h3>Respiratory Tract Modeling</h3>
-                <p>🫁 Cutting-edge 3D modeling of human respiratory systems including nasal cavities, trachea, and lung airways for breakthrough medical research and innovative device development.</p>
-            </div>
-            
-            <div class="service-card">
-                
-                {{^image}}
-                <div class="service-icon">🏥</div>
-                {{/image}}
-                <h3>Medical Device CFD</h3>
-                <p>Optimization of inhalers, nebulizers, ventilators, and other respiratory medical devices through detailed computational fluid dynamics analysis.</p>
-            </div>
-            
-            <div class="service-card">
-                
-                {{^image}}
-                <div class="service-icon">🔬</div>
-                {{/image}}
-                <h3>Biomedical Flow Analysis</h3>
-                <p>Comprehensive analysis of blood flow in cardiovascular systems, cerebrospinal fluid dynamics, and other biomedical applications requiring precise flow modeling.</p>
-            </div>
-            
-            <div class="service-card">
-                
-                {{^image}}
-                <div class="service-icon">🧬</div>
-                {{/image}}
-                <h3>Particle Transport Studies</h3>
-                <p>Analysis of aerosol behavior, particle deposition patterns, drug delivery efficiency, and pathogen transport in respiratory systems.</p>
-            </div>
-            
-            <div class="service-card">
-                
-                {{^image}}
-                <div class="service-icon">📊</div>
-                {{/image}}
-                <h3>Flow Visualization</h3>
-                <p>High-quality 3D visualizations and animations of airflow patterns, pressure distributions, and velocity fields for presentations and analysis.</p>
-            </div>
-            
-            <div class="service-card">
-                
-                {{^image}}
-                <div class="service-icon">⚙️</div>
-                {{/image}}
-                <h3>Custom Simulation Development</h3>
-                <p>Bespoke CFD solutions using ANSYS Fluent, OpenFOAM, and other industry-standard tools for unique research and development projects.</p>
-            </div>
-            
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>🌊 Revolutionary CFD Solutions for Respiratory Systems</h1>
+            <p>Expert computational fluid dynamics consultancy specializing in respiratory airflow modeling, medical device optimization, and advanced biomedical flow analysis.</p>
+            <a href="#contact" class="cta-button">Get Free Consultation</a>
         </div>
-    </div>
-</section>\n<section id="about" class="about">
-    <div class="container">
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Leading CFD Expertise in Respiratory Systems</h3>
-                
-                <p>{{.}}</p>
-                
-                <p>{{.}}</p>
-                
-            </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Specialized Services</h2>
+            <p class="section-subtitle">Cutting-edge CFD analysis and modeling solutions tailored for respiratory and biomedical applications</p>
             
-            <div>
-                
-                <div class="stats">
-                    
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    
-                    <div class="stat">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Research Papers</div>
-                    </div>
-                    
-                    <div class="stat">
-                        <div class="stat-number">25+</div>
-                        <div class="stat-label">Countries Served</div>
-                    </div>
-                    
-                    <div class="stat">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🫁</div>
+                    <h3>Respiratory Tract Modeling</h3>
+                    <p>🫁 Cutting-edge 3D modeling of human respiratory systems including nasal cavities, trachea, and lung airways for breakthrough medical research and innovative device development.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Medical Device CFD</h3>
+                    <p>Optimization of inhalers, nebulizers, ventilators, and other respiratory medical devices through detailed computational fluid dynamics analysis.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Biomedical Flow Analysis</h3>
+                    <p>Comprehensive analysis of blood flow in cardiovascular systems, cerebrospinal fluid dynamics, and other biomedical applications requiring precise flow modeling.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧬</div>
+                    <h3>Particle Transport Studies</h3>
+                    <p>Analysis of aerosol behavior, particle deposition patterns, drug delivery efficiency, and pathogen transport in respiratory systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Flow Visualization</h3>
+                    <p>High-quality 3D visualizations and animations of airflow patterns, pressure distributions, and velocity fields for presentations and analysis.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Custom Simulation Development</h3>
+                    <p>Bespoke CFD solutions using ANSYS Fluent, OpenFOAM, and other industry-standard tools for unique research and development projects.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>\n<section id="blog" class="blog"><div class="container"><h2 class="section-title">Latest Insights & Research</h2><p class="section-subtitle">Stay updated with the latest developments in CFD, respiratory modeling, and airflow analysis</p></div></section>\n<section id="contact" class="contact"><div class="container"><h2 class="section-title">Start Your CFD Project Today</h2><p class="section-subtitle">Ready to optimize your respiratory system or airflow application? Let's discuss your specific requirements.</p></div></section>
-    </main>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text"><h3>Leading CFD Expertise in Respiratory Systems</h3><p>With over a decade of experience in computational fluid dynamics, our team specializes in the complex world of respiratory airflow modeling. We combine advanced simulation techniques with deep understanding of physiological and engineering principles.</p><p>Our expertise spans from microscale particle transport in lung airways to large-scale biomedical flow analysis. We work with medical device manufacturers, pharmaceutical companies, research institutions, and engineering firms worldwide.</p>
+                </div>
+                <div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Research Papers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Countries Served</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Start Your CFD Project Today</h2>
+            <p class="section-subtitle">Ready to optimize your respiratory system or airflow application? Let's discuss your specific requirements.</p>
+            
+            <div class="contact-content">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company/Organization</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Project Description *</label>
+                        <textarea id="message" name="message" placeholder="Please describe your project requirements..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📧</span>
+                        <span>info@respiratoryairflow.com</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📞</span>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📍</span>
+                        <span>123 Engineering Drive<br>Research Park, ST 12345</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">🕒</span>
+                        <span>Monday - Friday<br>9:00 AM - 6:00 PM EST</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                
                 <div class="footer-section">
                     <h4>Respiratory Airflow Modelling</h4>
-                    
-                    {{#link}}
-                    <a href="{{link}}">Expert CFD consultancy specializing in respiratory systems, medical device optimization, and advanced simulation techniques.</a>
-                    {{/link}}
-                    {{^link}}
-                    <p>Expert CFD consultancy specializing in respiratory systems, medical device optimization, and advanced simulation techniques.</p>
-                    {{/link}}
-                    
+                    <p>Expert CFD consultancy specializing in respiratory systems</p>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Services</h4>
-                    
-                    
-                    {{^link}}
-                    <p>Respiratory Tract Modeling</p>
-                    {{/link}}
-                    
-                    
-                    {{^link}}
-                    <p>Medical Device CFD</p>
-                    {{/link}}
-                    
-                    
-                    {{^link}}
-                    <p>Biomedical Flow Analysis</p>
-                    {{/link}}
-                    
-                    
-                    {{^link}}
-                    <p>Particle Transport Studies</p>
-                    {{/link}}
-                    
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    
-                    
-                    {{^link}}
-                    <p>Blog & Research</p>
-                    {{/link}}
-                    
-                    
-                    {{^link}}
-                    <p>Case Studies</p>
-                    {{/link}}
-                    
-                    
-                    {{^link}}
-                    <p>Technical Papers</p>
-                    {{/link}}
-                    
-                    
-                    {{^link}}
-                    <p>Software Tools</p>
-                    {{/link}}
-                    
+                    <a href="#services">Respiratory Tract Modeling</a>
+                    <a href="#services">Medical Device CFD</a>
+                    <a href="#services">Biomedical Flow Analysis</a>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    
-                    
-                    {{^link}}
-                    <p>info@respiratoryairflow.com</p>
-                    {{/link}}
-                    
-                    
-                    {{^link}}
-                    <p>+1 (555) 123-4567</p>
-                    {{/link}}
-                    
-                    {{#link}}
-                    <a href="{{link}}">Monday - Friday, 9:00 AM - 6:00 PM EST</a>
-                    {{/link}}
-                    {{^link}}
-                    <p>Monday - Friday, 9:00 AM - 6:00 PM EST</p>
-                    {{/link}}
-                    
+                    <a href="mailto:info@respiratoryairflow.com">info@respiratoryairflow.com</a>
+                    <a href="tel:+15551234567">+1 (555) 123-4567</a>
                 </div>
-                
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2024 Respiratory Airflow Modelling. All rights reserved. | Professional CFD Consultancy Services</p>
+                <p>&copy; 2024 Respiratory Airflow Modelling. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="scripts/main.js"></script>
-    <script src="scripts/components.js"></script>
 </body>
 </html>
