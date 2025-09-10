@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "title": "🌊 Revolutionary CFD Solutions for Respiratory Systems",
+    "subtitle": "Expert computational fluid dynamics consultancy specializing in respiratory airflow modeling, medical device optimization, and advanced biomedical flow analysis.",
+    "cta_text": "Get Free Consultation",
+    "cta_link": "#contact",
+    "background_image": ""
+  },
+  "services": {
+    "title": "Our Specialized Services",
+    "subtitle": "Cutting-edge CFD analysis and modeling solutions tailored for respiratory and biomedical applications",
+    "items": [
+      {
+        "title": "Respiratory Tract Modeling",
+        "description": "🫁 Cutting-edge 3D modeling of human respiratory systems including nasal cavities, trachea, and lung airways for breakthrough medical research and innovative device development.",
+        "icon": "🫁",
+        "image": ""
+      },
+      {
+        "title": "Medical Device CFD",
+        "description": "Optimization of inhalers, nebulizers, ventilators, and other respiratory medical devices through detailed computational fluid dynamics analysis.",
+        "icon": "🏥",
+        "image": ""
+      },
+      {
+        "title": "Biomedical Flow Analysis",
+        "description": "Comprehensive analysis of blood flow in cardiovascular systems, cerebrospinal fluid dynamics, and other biomedical applications requiring precise flow modeling.",
+        "icon": "🔬",
+        "image": ""
+      },
+      {
+        "title": "Particle Transport Studies",
+        "description": "Analysis of aerosol behavior, particle deposition patterns, drug delivery efficiency, and pathogen transport in respiratory systems.",
+        "icon": "🧬",
+        "image": ""
+      },
+      {
+        "title": "Flow Visualization",
+        "description": "High-quality 3D visualizations and animations of airflow patterns, pressure distributions, and velocity fields for presentations and analysis.",
+        "icon": "📊",
+        "image": ""
+      },
+      {
+        "title": "Custom Simulation Development",
+        "description": "Bespoke CFD solutions using ANSYS Fluent, OpenFOAM, and other industry-standard tools for unique research and development projects.",
+        "icon": "⚙️",
+        "image": ""
+      }
+    ]
+  },
+  "about": {
+    "title": "Leading CFD Expertise in Respiratory Systems",
+    "paragraphs": [
+      "With over a decade of experience in computational fluid dynamics, our team specializes in the complex world of respiratory airflow modeling. We combine advanced simulation techniques with deep understanding of physiological and engineering principles.",
+      "Our expertise spans from microscale particle transport in lung airways to large-scale biomedical flow analysis. We work with medical device manufacturers, pharmaceutical companies, research institutions, and engineering firms worldwide."
+    ],
+    "image": "",
+    "stats": [
+      {"number": "500+", "label": "Projects Completed"},
+      {"number": "50+", "label": "Research Papers"},
+      {"number": "25+", "label": "Countries Served"},
+      {"number": "10+", "label": "Years Experience"}
+    ]
+  },
+  "contact": {
+    "title": "Start Your CFD Project Today",
+    "subtitle": "Ready to optimize your respiratory system or airflow application? Let's discuss your specific requirements.",
+    "email": "info@respiratoryairflow.com",
+    "phone": "+1 (555) 123-4567",
+    "address": "123 Engineering Drive<br>Research Park, ST 12345",
+    "hours": "Monday - Friday<br>9:00 AM - 6:00 PM EST"
+  }
+}

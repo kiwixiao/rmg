@@ -1,0 +1,46 @@
+{
+  "site_title": "Respiratory Airflow Modelling",
+  "page_title": "Home",
+  "nav_items": [
+    {"title": "Home", "url": "#home"},
+    {"title": "Services", "url": "#services"},
+    {"title": "About", "url": "#about"},
+    {"title": "Blog", "url": "#blog"},
+    {"title": "Contact", "url": "#contact"}
+  ],
+  "footer_sections": [
+    {
+      "title": "Respiratory Airflow Modelling",
+      "items": [
+        {"text": "Expert CFD consultancy specializing in respiratory systems, medical device optimization, and advanced simulation techniques."}
+      ]
+    },
+    {
+      "title": "Services",
+      "items": [
+        {"text": "Respiratory Tract Modeling", "link": "#services"},
+        {"text": "Medical Device CFD", "link": "#services"},
+        {"text": "Biomedical Flow Analysis", "link": "#services"},
+        {"text": "Particle Transport Studies", "link": "#services"}
+      ]
+    },
+    {
+      "title": "Resources",
+      "items": [
+        {"text": "Blog & Research", "link": "#blog"},
+        {"text": "Case Studies", "link": "#"},
+        {"text": "Technical Papers", "link": "#"},
+        {"text": "Software Tools", "link": "#"}
+      ]
+    },
+    {
+      "title": "Contact",
+      "items": [
+        {"text": "info@respiratoryairflow.com", "link": "mailto:info@respiratoryairflow.com"},
+        {"text": "+1 (555) 123-4567", "link": "tel:+15551234567"},
+        {"text": "Monday - Friday, 9:00 AM - 6:00 PM EST"}
+      ]
+    }
+  ],
+  "footer_text": "&copy; 2024 Respiratory Airflow Modelling. All rights reserved. | Professional CFD Consultancy Services"
+}

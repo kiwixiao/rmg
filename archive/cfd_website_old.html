@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respiratory Airflow Modelling - CFD Consultancy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Content Management Styles */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 2000;
+            padding: 20px;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+        }
+
+        .admin-panel.open {
+            right: 0;
+        }
+
+        .admin-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2001;
+            font-size: 14px;
+        }
+
+        .admin-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .admin-section h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .admin-section label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--text-dark);
+        }
+
+        .admin-section input,
+        .admin-section textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .admin-section textarea {
+            height: 60px;
+            resize: vertical;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .image-placeholder.hero-bg {
+            height: 400px;
+            border-radius: 0;
+        }
+
+        .image-placeholder.service-image {
+            height: 150px;
+        }
+
+        .image-placeholder.blog-image {
+            height: 180px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero .image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Contact Form */
+        .contact {
+            background: var(--bg-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .contact-item-icon {
+            width: 20px;
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .admin-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Panel -->
+    <button class="admin-toggle" onclick="toggleAdmin()">✏️ Edit Content</button>
+    
+    <div class="admin-panel" id="adminPanel">
+        <h2 style="margin-bottom: 20px; color: var(--primary-color);">Content Manager</h2>
+        
+        <!-- Hero Section -->
+        <div class="admin-section">
+            <h3>🏠 Hero Section</h3>
+            <label>Background Image URL:</label>
+            <input type="text" id="hero-bg-url" placeholder="Leave empty to use gradient background">
+            
+            <label>Main Headline:</label>
+            <input type="text" id="hero-title" value="Advanced CFD Solutions for Respiratory Systems">
+            
+            <label>Subtitle:</label>
+            <textarea id="hero-subtitle">Expert computational fluid dynamics consultancy specializing in respiratory airflow modeling, medical device optimization, and advanced biomedical flow analysis.</textarea>
+            
+            <label>Button Text:</label>
+            <input type="text" id="hero-button" value="Get Free Consultation">
+        </div>
+
+        <!-- Services Section -->
+        <div class="admin-section">
+            <h3>⚙️ Services Section</h3>
+            <label>Section Title:</label>
+            <input type="text" id="services-title" value="Our Specialized Services">
+            
+            <label>Section Subtitle:</label>
+            <textarea id="services-subtitle">Cutting-edge CFD analysis and modeling solutions tailored for respiratory and biomedical applications</textarea>
+
+            <!-- Service 1 -->
+            <h4 style="margin-top: 15px;">Service 1</h4>
+            <label>Image URL:</label>
+            <input type="text" id="service1-img" placeholder="Leave empty for icon">
+            <label>Title:</label>
+            <input type="text" id="service1-title" value="Respiratory Tract Modeling">
+            <label>Description:</label>
+            <textarea id="service1-desc">Advanced 3D modeling of human respiratory systems including nasal cavities, trachea, and lung airways for medical research and device development.</textarea>
+
+            <!-- Service 2 -->
+            <h4 style="margin-top: 15px;">Service 2</h4>
+            <label>Image URL:</label>
+            <input type="text" id="service2-img" placeholder="Leave empty for icon">
+            <label>Title:</label>
+            <input type="text" id="service2-title" value="Medical Device CFD">
+            <label>Description:</label>
+            <textarea id="service2-desc">Optimization of inhalers, nebulizers, ventilators, and other respiratory medical devices through detailed computational fluid dynamics analysis.</textarea>
+
+            <!-- Service 3 -->
+            <h4 style="margin-top: 15px;">Service 3</h4>
+            <label>Image URL:</label>
+            <input type="text" id="service3-img" placeholder="Leave empty for icon">
+            <label>Title:</label>
+            <input type="text" id="service3-title" value="Biomedical Flow Analysis">
+            <label>Description:</label>
+            <textarea id="service3-desc">Comprehensive analysis of blood flow in cardiovascular systems, cerebrospinal fluid dynamics, and other biomedical applications requiring precise flow modeling.</textarea>
+        </div>
+
+        <!-- About Section -->
+        <div class="admin-section">
+            <h3>📖 About Section</h3>
+            <label>Image URL:</label>
+            <input type="text" id="about-img" placeholder="Leave empty for stats only">
+            
+            <label>Main Title:</label>
+            <input type="text" id="about-title" value="Leading CFD Expertise in Respiratory Systems">
+            
+            <label>Paragraph 1:</label>
+            <textarea id="about-p1">With over a decade of experience in computational fluid dynamics, our team specializes in the complex world of respiratory airflow modeling.</textarea>
+            
+            <label>Paragraph 2:</label>
+            <textarea id="about-p2">Our expertise spans from microscale particle transport in lung airways to large-scale biomedical flow analysis.</textarea>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="admin-section">
+            <h3>📰 Blog Section</h3>
+            <label>Section Title:</label>
+            <input type="text" id="blog-title" value="Latest Insights & Research">
+            
+            <!-- Blog Post 1 -->
+            <h4 style="margin-top: 15px;">Blog Post 1</h4>
+            <label>Image URL:</label>
+            <input type="text" id="blog1-img" placeholder="Leave empty for placeholder">
+            <label>Date:</label>
+            <input type="text" id="blog1-date" value="March 15, 2024">
+            <label>Title:</label>
+            <input type="text" id="blog1-title" value="Advances in Nasal Cavity CFD Modeling">
+            <label>Excerpt:</label>
+            <textarea id="blog1-excerpt">Exploring new techniques for accurate modeling of complex nasal airflow patterns and their impact on drug delivery systems.</textarea>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="admin-section">
+            <h3>📞 Contact Section</h3>
+            <label>Email:</label>
+            <input type="text" id="contact-email" value="info@respiratoryairflow.com">
+            
+            <label>Phone:</label>
+            <input type="text" id="contact-phone" value="+1 (555) 123-4567">
+            
+            <label>Address:</label>
+            <textarea id="contact-address">123 Engineering Drive<br>Research Park, ST 12345</textarea>
+        </div>
+
+        <button onclick="updateContent()" style="width: 100%; padding: 10px; background: var(--primary-color); color: white; border: none; border-radius: 5px; margin-top: 20px; cursor: pointer;">💾 Update Website</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo" id="logo-text">Respiratory Airflow Modelling</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="image-placeholder hero-bg" id="hero-background">
+            Hero Background Image
+        </div>
+        <div class="hero-content">
+            <h1 id="hero-title-display">Advanced CFD Solutions for Respiratory Systems</h1>
+            <p id="hero-subtitle-display">Expert computational fluid dynamics consultancy specializing in respiratory airflow modeling, medical device optimization, and advanced biomedical flow analysis.</p>
+            <a href="#contact" class="cta-button" id="hero-button-display">Get Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title" id="services-title-display">Our Specialized Services</h2>
+            <p class="section-subtitle" id="services-subtitle-display">Cutting-edge CFD analysis and modeling solutions tailored for respiratory and biomedical applications</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="image-placeholder service-image" id="service1-image">
+                        <div class="service-icon">🫁</div>
+                    </div>
+                    <h3 id="service1-title-display">Respiratory Tract Modeling</h3>
+                    <p id="service1-desc-display">Advanced 3D modeling of human respiratory systems including nasal cavities, trachea, and lung airways for medical research and device development.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="image-placeholder service-image" id="service2-image">
+                        <div class="service-icon">🏥</div>
+                    </div>
+                    <h3 id="service2-title-display">Medical Device CFD</h3>
+                    <p id="service2-desc-display">Optimization of inhalers, nebulizers, ventilators, and other respiratory medical devices through detailed computational fluid dynamics analysis.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="image-placeholder service-image" id="service3-image">
+                        <div class="service-icon">🔬</div>
+                    </div>
+                    <h3 id="service3-title-display">Biomedical Flow Analysis</h3>
+                    <p id="service3-desc-display">Comprehensive analysis of blood flow in cardiovascular systems, cerebrospinal fluid dynamics, and other biomedical applications requiring precise flow modeling.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="image-placeholder service-image">
+                        <div class="service-icon">🧬</div>
+                    </div>
+                    <h3>Particle Transport Studies</h3>
+                    <p>Analysis of aerosol behavior, particle deposition patterns, drug delivery efficiency, and pathogen transport in respiratory systems.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="image-placeholder service-image">
+                        <div class="service-icon">📊</div>
+                    </div>
+                    <h3>Flow Visualization</h3>
+                    <p>High-quality 3D visualizations and animations of airflow patterns, pressure distributions, and velocity fields for presentations and analysis.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="image-placeholder service-image">
+                        <div class="service-icon">⚙️</div>
+                    </div>
+                    <h3>Custom Simulation Development</h3>
+                    <p>Bespoke CFD solutions using ANSYS Fluent, OpenFOAM, and other industry-standard tools for unique research and development projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 id="about-title-display">Leading CFD Expertise in Respiratory Systems</h3>
+                    <p id="about-p1-display">With over a decade of experience in computational fluid dynamics, our team specializes in the complex world of respiratory airflow modeling. We combine advanced simulation techniques with deep understanding of physiological and engineering principles.</p>
+                    
+                    <p id="about-p2-display">Our expertise spans from microscale particle transport in lung airways to large-scale biomedical flow analysis. We work with medical device manufacturers, pharmaceutical companies, research institutions, and engineering firms worldwide.</p>
+                </div>
+                
+                <div>
+                    <div class="image-placeholder" id="about-image" style="margin-bottom: 2rem;">
+                        About Us Image
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Research Papers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Countries Served</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title" id="blog-title-display">Latest Insights & Research</h2>
+            <p class="section-subtitle">Stay updated with the latest developments in CFD, respiratory modeling, and airflow analysis</p>
+            
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="image-placeholder blog-image" id="blog1-image">Blog Image 1</div>
+                    <div class="blog-content">
+                        <div class="blog-date" id="blog1-date-display">March 15, 2024</div>
+                        <h3 class="blog-title" id="blog1-title-display">Advances in Nasal Cavity CFD Modeling</h3>
+                        <p class="blog-excerpt" id="blog1-excerpt-display">Exploring new techniques for accurate modeling of complex nasal airflow patterns and their impact on drug delivery systems.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="image-placeholder blog-image">Blog Image 2</div>
+                    <div class="blog-content">
+                        <div class="blog-date">March 8, 2024</div>
+                        <h3 class="blog-title">Optimizing Inhaler Design with CFD</h3>
+                        <p class="blog-excerpt">How computational fluid dynamics is revolutionizing the development of more effective respiratory medication delivery devices.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="image-placeholder blog-image">Blog Image 3</div>
+                    <div class="blog-content">
+                        <div class="blog-date">February 28, 2024</div>
+                        <h3 class="blog-title">Blood Flow Modeling in Cardiac Devices</h3>
+                        <p class="blog-excerpt">Advanced CFD techniques for analyzing blood flow patterns in artificial heart valves and ventricular assist devices.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Start Your CFD Project Today</h2>
+            <p class="section-subtitle">Ready to optimize your respiratory system or airflow application? Let's discuss your specific requirements.</p>
+            
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company/Organization</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-type">Project Type</label>
+                        <select id="project-type" name="project-type">
+                            <option value="">Select Project Type</option>
+                            <option value="respiratory-modeling">Respiratory Tract Modeling</option>
+                            <option value="medical-device">Medical Device CFD</option>
+                            <option value="biomedical-flow">Biomedical Flow Analysis</option>
+                            <option value="particle-transport">Particle Transport Studies</option>
+                            <option value="custom-simulation">Custom Simulation</option>
+                            <option value="consultation">General Consultation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Project Description *</label>
+                        <textarea id="message" name="message" placeholder="Please describe your project requirements, timeline, and any specific challenges you're facing..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📧</span>
+                        <span id="contact-email-display">info@respiratoryairflow.com</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📞</span>
+                        <span id="contact-phone-display">+1 (555) 123-4567</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📍</span>
+                        <span id="contact-address-display">123 Engineering Drive<br>Research Park, ST 12345</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">🕒</span>
+                        <span>Monday - Friday<br>9:00 AM - 6:00 PM EST</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Respiratory Airflow Modelling</h4>
+                    <p>Expert CFD consultancy specializing in respiratory systems, medical device optimization, and advanced simulation techniques.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="#services">Respiratory Tract Modeling</a>
+                    <a href="#services">Medical Device CFD</a>
+                    <a href="#services">Biomedical Flow Analysis</a>
+                    <a href="#services">Particle Transport Studies</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#blog">Blog & Research</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Technical Papers</a>
+                    <a href="#">Software Tools</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@respiratoryairflow.com">info@respiratoryairflow.com</a>
+                    <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                    <p>Monday - Friday, 9:00 AM - 6:00 PM EST</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Respiratory Airflow Modelling. All rights reserved. | Professional CFD Consultancy Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Admin Panel Functions
+        function toggleAdmin() {
+            const panel = document.getElementById('adminPanel');
+            panel.classList.toggle('open');
+        }
+
+        function loadImageOrFallback(imageUrl, containerId, fallbackContent) {
+            const container = document.getElementById(containerId);
+            if (imageUrl && imageUrl.trim() !== '') {
+                const img = new Image();
+                img.onload = function() {
+                    container.innerHTML = `<img src="${imageUrl}" alt="Image">`;
+                };
+                img.onerror = function() {
+                    container.innerHTML = fallbackContent;
+                };
+                img.src = imageUrl;
+            } else {
+                container.innerHTML = fallbackContent;
+            }
+        }
+
+        function updateContent() {
+            // Update Hero Section
+            const heroTitle = document.getElementById('hero-title').value;
+            const heroSubtitle = document.getElementById('hero-subtitle').value;
+            const heroButton = document.getElementById('hero-button').value;
+            const heroBgUrl = document.getElementById('hero-bg-url').value;
+            
+            document.getElementById('hero-title-display').textContent = heroTitle;
+            document.getElementById('hero-subtitle-display').textContent = heroSubtitle;
+            document.getElementById('hero-button-display').textContent = heroButton;
+            
+            // Update hero background
+            if (heroBgUrl && heroBgUrl.trim() !== '') {
+                const heroBackground = document.getElementById('hero-background');
+                const img = new Image();
+                img.onload = function() {
+                    heroBackground.style.backgroundImage = `linear-gradient(rgba(37, 99, 235, 0.7), rgba(30, 64, 175, 0.7)), url('${heroBgUrl}')`;
+                    heroBackground.style.backgroundSize = 'cover';
+                    heroBackground.style.backgroundPosition = 'center';
+                    heroBackground.innerHTML = '';
+                };
+                img.onerror = function() {
+                    heroBackground.style.backgroundImage = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+                    heroBackground.innerHTML = 'Hero Background Image';
+                };
+                img.src = heroBgUrl;
+            }
+
+            // Update Services Section
+            document.getElementById('services-title-display').textContent = document.getElementById('services-title').value;
+            document.getElementById('services-subtitle-display').textContent = document.getElementById('services-subtitle').value;
+            
+            // Update Service 1
+            document.getElementById('service1-title-display').textContent = document.getElementById('service1-title').value;
+            document.getElementById('service1-desc-display').textContent = document.getElementById('service1-desc').value;
+            loadImageOrFallback(
+                document.getElementById('service1-img').value,
+                'service1-image',
+                '<div class="service-icon">🫁</div>'
+            );
+
+            // Update Service 2
+            document.getElementById('service2-title-display').textContent = document.getElementById('service2-title').value;
+            document.getElementById('service2-desc-display').textContent = document.getElementById('service2-desc').value;
+            loadImageOrFallback(
+                document.getElementById('service2-img').value,
+                'service2-image',
+                '<div class="service-icon">🏥</div>'
+            );
+
+            // Update Service 3
+            document.getElementById('service3-title-display').textContent = document.getElementById('service3-title').value;
+            document.getElementById('service3-desc-display').textContent = document.getElementById('service3-desc').value;
+            loadImageOrFallback(
+                document.getElementById('service3-img').value,
+                'service3-image',
+                '<div class="service-icon">🔬</div>'
+            );
+
+            // Update About Section
+            document.getElementById('about-title-display').textContent = document.getElementById('about-title').value;
+            document.getElementById('about-p1-display').textContent = document.getElementById('about-p1').value;
+            document.getElementById('about-p2-display').textContent = document.getElementById('about-p2').value;
+            loadImageOrFallback(
+                document.getElementById('about-img').value,
+                'about-image',
+                'About Us Image'
+            );
+
+            // Update Blog Section
+            document.getElementById('blog-title-display').textContent = document.getElementById('blog-title').value;
+            document.getElementById('blog1-date-display').textContent = document.getElementById('blog1-date').value;
+            document.getElementById('blog1-title-display').textContent = document.getElementById('blog1-title').value;
+            document.getElementById('blog1-excerpt-display').textContent = document.getElementById('blog1-excerpt').value;
+            loadImageOrFallback(
+                document.getElementById('blog1-img').value,
+                'blog1-image',
+                'Blog Image 1'
+            );
+
+            // Update Contact Info
+            document.getElementById('contact-email-display').textContent = document.getElementById('contact-email').value;
+            document.getElementById('contact-phone-display').textContent = document.getElementById('contact-phone').value;
+            document.getElementById('contact-address-display').innerHTML = document.getElementById('contact-address').value;
+
+            // Close admin panel
+            document.getElementById('adminPanel').classList.remove('open');
+            
+            alert('✅ Website updated successfully!');
+        }
+
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            this.reset();
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header transparency on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(37, 99, 235, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
