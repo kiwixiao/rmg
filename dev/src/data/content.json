@@ -69,9 +69,10 @@
   "contact": {
     "title": "Start Your CFD Project Today",
     "subtitle": "Ready to optimize your respiratory system or airflow application? Let's discuss your specific requirements.",
-    "email": "info@respiratoryairflow.com", 
+    "email": "alister.bates@respiratoryairflow.com", 
     "phone": "+1 (555) 123-4567",
     "address": "123 Engineering Drive<br>Research Park, ST 12345",
-    "hours": "Monday - Friday<br>9:00 AM - 6:00 PM EST"
+    "hours": "Monday - Friday<br>9:00 AM - 6:00 PM EST",
+    "contact_person": "Alister Bates, PhD"
   }
 }
