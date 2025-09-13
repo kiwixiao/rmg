@@ -75,6 +75,13 @@ def main():
         print("❌ Build failed")
         return False
     
+    # Restore fixed CSS after build
+    if Path("styles/components.css.fixed").exists():
+        if not run_command("cp styles/components.css.fixed styles/components.css"):
+            print("⚠️  Warning: Could not restore CSS fix")
+        else:
+            print("✅ Restored CSS fix for image scaling")
+    
     print("\n🎯 Local testing workflow:")
     print("1. Website built from dev/src/data/content.json")
     print("2. Generated files are in the root directory")
