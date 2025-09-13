@@ -149,7 +149,7 @@ nav {
 .service-image {
     margin-bottom: var(--spacing-md);
     width: 100%;
-    height: 180px;
+    height: 220px;
     overflow: hidden;
     border-radius: var(--border-radius-lg);
     display: flex;
