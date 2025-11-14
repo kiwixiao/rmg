@@ -10,12 +10,86 @@ class WebsiteBuilder:
     def __init__(self):
         self.dev_dir = Path("dev")
         self.root_dir = Path(".")
-        
+        self.content_dir = Path("src/data/content")
+
+    def load_md_file(self, filename):
+        """Load content from a markdown file."""
+        md_file = self.content_dir / filename
+        if md_file.exists():
+            with open(md_file, 'r') as f:
+                return f.read().strip()
+        return ""
+
+    def parse_md_sections(self, md_content):
+        """Parse markdown content by headers."""
+        sections = {}
+        current_section = None
+        current_content = []
+
+        for line in md_content.split('\n'):
+            if line.startswith('# '):
+                if current_section:
+                    sections[current_section] = '\n'.join(current_content).strip()
+                current_section = line[2:].strip()
+                current_content = []
+            else:
+                current_content.append(line)
+
+        if current_section:
+            sections[current_section] = '\n'.join(current_content).strip()
+
+        return sections
+
     def load_content(self):
-        """Load content from JSON file."""
+        """Load content from JSON file and MD files."""
+        # Load structured data from JSON
         content_file = Path("src/data/content.json")
         with open(content_file, 'r') as f:
-            return json.load(f)
+            content = json.load(f)
+
+        # Load homepage section
+        homepage_md = self.load_md_file("homepage.md")
+        if homepage_md:
+            homepage_sections = self.parse_md_sections(homepage_md)
+            content["hero"]["title"] = homepage_sections.get("Main Title", "")
+            content["hero"]["subtitle"] = homepage_sections.get("Subtitle", "")
+
+        # Load services section
+        services_md = self.load_md_file("services.md")
+        if services_md:
+            services_sections = self.parse_md_sections(services_md)
+            content["services"]["title"] = services_sections.get("Page Title", "")
+            content["services"]["subtitle"] = services_sections.get("Page Subtitle", "")
+
+            # Load service descriptions
+            if len(content["services"]["items"]) >= 4:
+                content["services"]["items"][0]["description"] = services_sections.get("Service 1: Airway Flow Modeling", "")
+                content["services"]["items"][1]["description"] = services_sections.get("Service 2: Inhaled Drug Delivery Deposition Quantification", "")
+                content["services"]["items"][2]["description"] = services_sections.get("Service 3: Inhaler Device Optimization", "")
+                content["services"]["items"][3]["description"] = services_sections.get("Service 4: 3D Flow Rendering & Visualization", "")
+
+        # Load about section
+        about_md = self.load_md_file("about.md")
+        if about_md:
+            # Split by double newlines to get paragraphs
+            paragraphs = [p.strip() for p in about_md.split('\n\n') if p.strip()]
+            content["about"]["paragraphs"] = paragraphs
+
+        # Load research section
+        research_md = self.load_md_file("research.md")
+        if research_md:
+            research_sections = self.parse_md_sections(research_md)
+            content["research"]["title"] = research_sections.get("Page Title", "")
+            content["research"]["subtitle"] = research_sections.get("Page Subtitle", "")
+
+        # Load contact section
+        contact_md = self.load_md_file("contact.md")
+        if contact_md:
+            contact_sections = self.parse_md_sections(contact_md)
+            content["contact"]["title"] = contact_sections.get("Page Title", "")
+            content["contact"]["subtitle"] = contact_sections.get("Page Subtitle", "")
+
+        return content
     
     def generate_navigation(self, current_page="index"):
         """Generate navigation HTML."""

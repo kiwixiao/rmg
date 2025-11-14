@@ -4,37 +4,37 @@
     "description": "Advanced respiratory research and modeling solutions by Airflow Inferred LLC"
   },
   "hero": {
-    "title": "🫁 Advanced Respiratory Engineering Research", 
-    "subtitle": "Respiratory Engineering Lab by Airflow Inferred LLC specializes in airway flow modeling, inhaled drug delivery deposition quantification, inhaler device optimization, and 3D flow rendering.",
+    "title": "",
+    "subtitle": "",
     "cta_text": "Get Free Consultation",
     "cta_link": "#contact",
     "background_image": ""
   },
   "services": {
-    "title": "Our Core Research Areas",
-    "subtitle": "Advanced respiratory engineering solutions by Airflow Inferred LLC",
+    "title": "",
+    "subtitle": "",
     "items": [
       {
         "title": "Airway Flow Modeling",
-        "description": "Advanced computational fluid dynamics modeling of respiratory airways from nasal cavities to lung bronchioles. We create detailed 3D models to understand airflow patterns, pressure distributions, and breathing mechanics for medical research and clinical applications.",
+        "description": "",
         "icon": "🫁",
         "image": "assets/images/airway-modeling.png"
       },
       {
-        "title": "Inhaled Drug Delivery Deposition Quantification", 
-        "description": "Precise quantification and optimization of drug particle deposition in respiratory systems. Our advanced modeling techniques predict where and how much medication deposits in specific lung regions, enabling better therapeutic outcomes and drug formulation design.",
+        "title": "Inhaled Drug Delivery Deposition Quantification",
+        "description": "",
         "icon": "💊",
         "image": "assets/images/drug-delivery.png"
       },
       {
         "title": "Inhaler Device Optimization",
-        "description": "Comprehensive analysis and optimization of inhaler devices including MDIs, DPIs, and nebulizers. We evaluate device performance, particle generation, flow dynamics, and delivery efficiency to help pharmaceutical companies develop more effective inhalation devices.",
-        "icon": "🏥", 
+        "description": "",
+        "icon": "🏥",
         "image": "assets/images/inhaler-device.png"
       },
       {
         "title": "3D Flow Rendering & Visualization",
-        "description": "High-quality 3D visualizations and animations of respiratory airflow, particle trajectories, and drug deposition patterns. Our advanced rendering techniques create compelling visual representations for research presentations, regulatory submissions, and educational purposes.",
+        "description": "",
         "icon": "🎨",
         "image": "assets/images/flow-visulization.png"
       }
@@ -42,10 +42,7 @@
   },
   "about": {
     "title": "Respiratory Engineering Lab",
-    "paragraphs": [
-      "With over a decade of experience in computational fluid dynamics, our team specializes in the complex world of respiratory airflow modeling. We combine advanced simulation techniques with deep understanding of physiological and engineering principles.",
-      "Our expertise spans from microscale particle transport in lung airways to large-scale biomedical flow analysis. We work with medical device manufacturers, pharmaceutical companies, research institutions, and engineering firms worldwide."
-    ],
+    "paragraphs": [],
     "image": "",
     "stats": [
       {"number": "500+", "label": "Projects Completed"},
@@ -55,74 +52,144 @@
     ]
   },
   "research": {
-    "title": "Research Publications",
-    "subtitle": "Scientific contributions and peer-reviewed research by Dr. Alister Bates",
+    "title": "",
+    "subtitle": "",
     "papers": [
       {
-        "title": "Human upper-airway respiratory airflow: In vivo comparison of computational fluid dynamics simulations and hyperpolarized 129Xe phase contrast MRI velocimetry",
-        "authors": "Qiwei Xiao, Neil J. Stewart, Matthew M. Willmering, Chamindu C. Gunatilaka, Robert P. Thomen, Andreas Schuh, Guruprasad Krishnamoorthy, Hui Wang, Raouf S. Amin, Charles L. Dumoulin, Jason C. Woods, Alister J. Bates",
-        "journal": "PLOS ONE",
-        "year": "2021",
-        "doi": "10.1371/journal.pone.0256460",
-        "abstract": "Computational fluid dynamics (CFD) simulations of respiratory airflow have the potential to change the clinical assessment of regional airway function in health and disease. This study compared CFD simulations with phase contrast MRI using hyperpolarized 129Xe gas in three healthy subjects, showing good qualitative agreement in flow patterns and statistically significant correlations between velocity values.",
-        "pdf_link": "",
-        "categories": ["CFD", "Respiratory Modeling", "MRI Validation"]
-      },
-      {
-        "title": "The Effect of Airway Motion and Breathing Phase During Imaging on CFD Simulations of Respiratory Airflow",
-        "authors": "Alister J. Bates, Andreas Schuh, Guruprasad Krishnamoorthy, Robert P. Thomen, Jason C. Woods",
-        "journal": "Annals of Biomedical Engineering",
-        "year": "2021",
-        "doi": "10.1007/s10439-020-02669-2",
-        "abstract": "This study quantifies how much the airway moves during the respiratory cycle and determines how this motion affects CFD pressure loss predictions. The research demonstrates that realistic movement of the airway is vital to producing clinically relevant computational models of respiratory airflow.",
-        "pdf_link": "",
-        "categories": ["CFD", "Dynamic Airway Motion", "Clinical Applications"]
-      },
-      {
-        "title": "A novel method to generate dynamic boundary conditions for airway CFD by mapping upper airway movement with non-rigid registration of dynamic and static MRI",
-        "authors": "Alister J. Bates, Andreas Schuh, Guruprasad Krishnamoorthy, Robert P. Thomen, Charles L. Dumoulin, Jason C. Woods",
-        "journal": "International Journal for Numerical Methods in Biomedical Engineering",
-        "year": "2018",
-        "doi": "10.1002/cnm.3144",
-        "abstract": "A novel method for generating dynamic boundary conditions for CFD simulations by mapping upper airway movement using non-rigid registration of dynamic and static MRI. This approach enables the incorporation of realistic airway motion into CFD models.",
-        "pdf_link": "",
-        "categories": ["CFD", "Dynamic Modeling", "MRI Registration"]
-      },
-      {
-        "title": "Assessing the relationship between movement and airflow in the upper airway using computational fluid dynamics with motion determined from magnetic resonance imaging",
-        "authors": "Alister J. Bates, Andreas Schuh, Guruprasad Krishnamoorthy, Robert P. Thomen, Charles L. Dumoulin, Jason C. Woods",
-        "journal": "Scientific Reports",
-        "year": "2017",
-        "doi": "10.1038/s41598-017-16546-3",
-        "abstract": "This study assesses the relationship between airway wall movement and airflow using computational fluid dynamics with motion determined from magnetic resonance imaging. The work demonstrates the importance of including dynamic wall motion in respiratory CFD simulations.",
-        "pdf_link": "",
-        "categories": ["CFD", "Airway Movement", "MRI Analysis"]
-      },
-      {
-        "title": "Effects of respiratory rate on the fluid mechanics of a reconstructed upper airway",
-        "authors": "Alister J. Bates, Raouf S. Amin, Ephraim J. Gutmark",
-        "journal": "Building and Environment",
-        "year": "2021",
-        "doi": "10.1016/j.buildenv.2021.108023",
-        "abstract": "Investigation of how respiratory rate affects the fluid mechanics of the upper airway using CFD simulations on reconstructed geometries. This study provides insights into the effects of breathing patterns on airway flow characteristics.",
-        "pdf_link": "",
-        "categories": ["CFD", "Respiratory Rate", "Fluid Mechanics"]
-      },
-      {
         "title": "The effect of including dynamic imaging derived airway wall motion in CFD simulations of respiratory airflow in patients with OSA",
-        "authors": "Alister J. Bates, Jason C. Woods, Raouf S. Amin",
+        "authors": "Xiao, Q; Gunatilaka, C; McConnell, K; Bates, A",
         "journal": "Scientific Reports",
         "year": "2024",
         "doi": "10.1038/s41598-024-68180-6",
-        "abstract": "This study examines how including dynamic airway wall motion affects CFD predictions in patients with obstructive sleep apnea (OSA). The research shows that airway motion significantly impacts pressure loss calculations and clinical assessment of airway resistance.",
+        "abstract": "Obstructive sleep apnea (OSA) is caused by periodic airway collapse during sleep. This study shows that discrepancies between dynamic and static wall simulations are subject-specific, with total pressure loss differing by up to 400% between static and dynamic simulations.",
         "pdf_link": "",
         "categories": ["CFD", "Obstructive Sleep Apnea", "Dynamic Modeling"]
+      },
+      {
+        "title": "Effects of decongestion on nasal cavity air conditioning efficiency: a CFD cohort study",
+        "authors": "Xiao, Q; Bates, AJ; Doorly, DJ",
+        "journal": "Scientific Reports",
+        "year": "2024",
+        "doi": "10.1038/s41598-024-58661-7",
+        "abstract": "CFD analysis of how nasal decongestion affects air conditioning efficiency in the nasal cavity, with implications for understanding nasal function and obstruction.",
+        "pdf_link": "",
+        "categories": ["CFD", "Nasal Airflow", "Clinical Applications"]
+      },
+      {
+        "title": "Effect of airway wall motion on particle deposition and delivery in the neonatal trachea",
+        "authors": "Gunatilaka, CC; McKenzie, C; Xiao, Q; Higano, NS; Woods, JC; Bates, AJ",
+        "journal": "Journal of Aerosol Science",
+        "year": "2024",
+        "doi": "10.1016/j.jaerosci.2024.106450",
+        "abstract": "Investigation of how airway wall motion affects particle deposition and drug delivery in neonatal airways using computational modeling.",
+        "pdf_link": "",
+        "categories": ["Drug Delivery", "Neonatal Airways", "CFD"]
+      },
+      {
+        "title": "Tracheomalacia Reduces Aerosolized Drug Delivery to the Lung",
+        "authors": "Gunatilaka, CC; McKenzie, C; Hysinger, EB; Xiao, Q; Higano, NS; Woods, JC; Bates, AJ",
+        "journal": "Journal of Aerosol Medicine and Pulmonary Drug Delivery",
+        "year": "2024",
+        "doi": "10.1089/jamp.2023.0023",
+        "abstract": "Demonstrates that tracheomalacia significantly reduces drug delivery efficiency to the lungs, with important implications for treating neonates with airway malacia.",
+        "pdf_link": "",
+        "categories": ["Drug Delivery", "Tracheomalacia", "Clinical Impact"]
+      },
+      {
+        "title": "The interaction between neuromuscular forces, aerodynamic forces, and anatomical motion in the upper airway predicts severity",
+        "authors": "Xiao, Q; Ignatiuk, D; McConnell, K; Gunatilaka, C; Schuh, A; Fleck, R; Ishman, S; Amin, R; Bates, A",
+        "journal": "Journal of Applied Physiology",
+        "year": "2024",
+        "doi": "10.1152/japplphysiol.00400.2023",
+        "abstract": "Analysis of how neuromuscular forces, aerodynamic forces, and anatomical motion interact to predict upper airway obstruction severity in sleep apnea patients.",
+        "pdf_link": "",
+        "categories": ["OSA", "Neuromuscular Control", "Biomechanics"]
+      },
+      {
+        "title": "Computational assessment of upper airway muscular activity in obstructive sleep apnea",
+        "authors": "Ignatiuk, D; Xiao, Q; McConnell, K; Fleck, R; Schuler, C; Schuh, A; Amin, R; Bates, A",
+        "journal": "Journal of Biomechanics",
+        "year": "2022",
+        "doi": "10.1016/j.jbiomech.2022.111304",
+        "abstract": "Computational assessment of upper airway neuromuscular activity in patients with obstructive sleep apnea using biomechanical modeling.",
+        "pdf_link": "",
+        "categories": ["OSA", "Biomechanics", "Muscular Activity"]
+      },
+      {
+        "title": "Predicting tracheal work of breathing in neonates based on radiological and pulmonary measurements",
+        "authors": "Gunatilaka, CC; Hysinger, EB; Schuh, A; Xiao, Q; Gandhi, DB; Higano, NS; Ignatiuk, D; Hossain, MM; Fleck, RJ; Woods, JC; Bates, AJ",
+        "journal": "Journal of Applied Physiology",
+        "year": "2022",
+        "doi": "10.1152/japplphysiol.00399.2022",
+        "abstract": "Development of methods to predict tracheal work of breathing in neonates using radiological and pulmonary measurements, enabling non-invasive assessment.",
+        "pdf_link": "",
+        "categories": ["Neonatal Medicine", "Work of Breathing", "Clinical Prediction"]
+      },
+      {
+        "title": "Human upper-airway respiratory airflow: In vivo comparison of computational fluid dynamics simulations and hyperpolarized 129Xe phase contrast MRI velocimetry",
+        "authors": "Xiao, Q; Stewart, NJ; Willmering, MM; Gunatilaka, CC; Thomen, RP; Schuh, A; Krishnamoorthy, G; Wang, H; Amin, RS; Dumoulin, CL; Woods, JC; Bates, AJ",
+        "journal": "PLoS One",
+        "year": "2021",
+        "doi": "10.1371/journal.pone.0256460",
+        "abstract": "First in vivo validation of CFD simulations against hyperpolarized 129Xe MRI velocity measurements in human airways, demonstrating good agreement between computational and experimental methods.",
+        "pdf_link": "",
+        "categories": ["CFD Validation", "MRI", "Respiratory Modeling"]
+      },
+      {
+        "title": "Neonates With Tracheomalacia Generate Auto-Positive End-Expiratory Pressure via Glottis Closure",
+        "authors": "Gunatilaka, CC; Hysinger, EB; Schuh, A; Gandhi, DB; Higano, NS; Xiao, Q; Hahn, AD; Fain, SB; Fleck, RJ; Woods, JC; Bates, AJ",
+        "journal": "Chest",
+        "year": "2021",
+        "doi": "10.1016/j.chest.2021.06.049",
+        "abstract": "Discovery that neonates with tracheomalacia generate auto-PEEP through glottis closure, a compensatory mechanism to maintain airway patency.",
+        "pdf_link": "",
+        "categories": ["Tracheomalacia", "Neonatal Physiology", "Clinical Discovery"]
+      },
+      {
+        "title": "The effect of decongestion on nasal airway patency and airflow",
+        "authors": "Xiao, Q; Bates, AJ; Cetto, R; Doorly, DJ",
+        "journal": "Scientific Reports",
+        "year": "2021",
+        "doi": "10.1038/s41598-021-93769-6",
+        "abstract": "CFD study of how nasal decongestion affects airway patency and airflow patterns, with clinical implications for treating nasal obstruction.",
+        "pdf_link": "",
+        "categories": ["Nasal CFD", "Clinical Applications", "Decongestion"]
+      },
+      {
+        "title": "Increased Work of Breathing due to Tracheomalacia in Neonates",
+        "authors": "Gunatilaka, CC; Higano, NS; Hysinger, EB; Gandhi, DB; Fleck, RJ; Hahn, AD; Fain, SB; Woods, JC; Bates, AJ",
+        "journal": "Annals of the American Thoracic Society",
+        "year": "2020",
+        "doi": "10.1513/AnnalsATS.202002-162OC",
+        "abstract": "Quantification showing tracheal work of breathing increased by 337% in neonates with tracheomalacia compared to 24% in those without, demonstrating significant clinical impact.",
+        "pdf_link": "",
+        "categories": ["Tracheomalacia", "Work of Breathing", "Neonatal Medicine"]
+      },
+      {
+        "title": "The Effect of Airway Motion and Breathing Phase During Imaging on CFD Simulations of Respiratory Airflow",
+        "authors": "Bates, AJ; Schuh, A; Krishnamoorthy, G; Thomen, RP; Woods, JC",
+        "journal": "Computers in Biology and Medicine",
+        "year": "2020",
+        "doi": "10.1016/j.compbiomed.2020.104113",
+        "abstract": "Demonstrates that airway motion during breathing significantly affects CFD predictions, with implications for timing of medical imaging.",
+        "pdf_link": "",
+        "categories": ["Dynamic CFD", "Imaging Protocols", "Methodology"]
+      },
+      {
+        "title": "Assessing the relationship between movement and airflow in the upper airway using computational fluid dynamics with motion determined from magnetic resonance imaging",
+        "authors": "Bates, AJ; Schuh, A; Krishnamoorthy, G; Thomen, RP; Dumoulin, CL; Woods, JC",
+        "journal": "Scientific Reports",
+        "year": "2017",
+        "doi": "10.1038/s41598-017-16546-3",
+        "abstract": "Pioneering study establishing methods to incorporate airway wall motion from MRI into CFD simulations, enabling dynamic airway modeling.",
+        "pdf_link": "",
+        "categories": ["Dynamic CFD", "MRI", "Methodology Development"]
       }
     ]
   },
   "contact": {
-    "title": "Start Your CFD Project Today",
-    "subtitle": "Ready to optimize your respiratory system or airflow application? Let's discuss your specific requirements.",
+    "title": "",
+    "subtitle": "",
     "email": "alister.bates@respiratoryairflow.com", 
     "phone": "+1 (555) 123-4567",
     "address": "123 Engineering Drive<br>Research Park, ST 12345",
