@@ -18,25 +18,29 @@
         "title": "Airway Flow Modeling",
         "description": "",
         "icon": "🫁",
-        "image": "assets/images/airway-modeling.png"
+        "image": "assets/images/airway-modeling.png",
+        "video": "assets/videos/SpinningSubject.mp4"
       },
       {
         "title": "Inhaled Drug Delivery Deposition Quantification",
         "description": "",
         "icon": "💊",
-        "image": "assets/images/drug-delivery.png"
+        "image": "assets/images/drug-delivery.png",
+        "video": "assets/videos/SpinningSubject.mp4"
       },
       {
         "title": "Inhaler Device Optimization",
         "description": "",
         "icon": "🏥",
-        "image": "assets/images/inhaler-device.png"
+        "image": "assets/images/inhaler-device.png",
+        "video": "assets/videos/SpinningSubject.mp4"
       },
       {
         "title": "3D Flow Rendering & Visualization",
         "description": "",
         "icon": "🎨",
-        "image": "assets/images/flow-visulization.png"
+        "image": "assets/images/flow-visulization.png",
+        "video": "assets/videos/SpinningSubject.mp4"
       }
     ]
   },

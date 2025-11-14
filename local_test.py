@@ -43,22 +43,23 @@ def build_website():
     return True
 
 def serve_locally():
-    """Start local HTTP server."""
+    """Start local HTTP server from docs directory."""
     print("🌐 Starting local server...")
     print("📍 Website will be available at: http://localhost:8000")
     print("🔄 Press Ctrl+C to stop the server")
     print("=" * 50)
-    
+
     # Try to open browser automatically
     try:
         webbrowser.open('http://localhost:8000')
         print("🌍 Opening browser automatically...")
     except:
         print("💡 Manually open: http://localhost:8000")
-    
-    # Start server
+
+    # Start server from docs directory
     try:
-        subprocess.run(["python", "-m", "http.server", "8000"], 
+        subprocess.run(["python", "-m", "http.server", "8000"],
+                      cwd="docs",
                       check=True)
     except KeyboardInterrupt:
         print("\n🛑 Server stopped")
@@ -76,20 +77,20 @@ def main():
         return False
     
     # Restore fixed CSS after build
-    if Path("styles/components.css.fixed").exists():
-        if not run_command("cp styles/components.css.fixed styles/components.css"):
+    if Path("docs/styles/components.css.fixed").exists():
+        if not run_command("cp docs/styles/components.css.fixed docs/styles/components.css"):
             print("⚠️  Warning: Could not restore CSS fix")
         else:
-            print("✅ Restored CSS fix for image scaling")
+            print("✅ Restored CSS fix for 2x2 services grid")
     
     print("\n🎯 Local testing workflow:")
-    print("1. Website built from dev/src/data/content.json")
-    print("2. Generated files are in the root directory")
+    print("1. Website built from dev/src/data/content.json and MD files")
+    print("2. Generated files are in the docs/ directory")
     print("3. Your modular dev/ structure is preserved")
     print("4. When ready to deploy, run: python deploy.py")
     print()
-    
-    # Start local server
+
+    # Start local server from docs directory
     serve_locally()
     
     return True

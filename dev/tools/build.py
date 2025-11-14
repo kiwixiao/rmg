@@ -238,15 +238,23 @@ class WebsiteBuilder:
         
         # Generate service cards
         for service in content["services"]["items"]:
-            icon_or_image = ""
-            if service["image"]:
-                icon_or_image = f'<div class="service-image"><img src="{service["image"]}" alt="{service["title"]}"></div>'
+            media_content = ""
+            # Prioritize video over image
+            if service.get("video"):
+                media_content = f'''<div class="service-video">
+                    <video autoplay loop muted playsinline>
+                        <source src="{service["video"]}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>'''
+            elif service.get("image"):
+                media_content = f'<div class="service-image"><img src="{service["image"]}" alt="{service["title"]}"></div>'
             else:
-                icon_or_image = f'<div class="service-icon">{service["icon"]}</div>'
-            
+                media_content = f'<div class="service-icon">{service["icon"]}</div>'
+
             service_html = f'''
                 <div class="service-card">
-                    {icon_or_image}
+                    {media_content}
                     <h3>{service["title"]}</h3>
                     <p>{service["description"]}</p>
                 </div>'''
@@ -430,7 +438,7 @@ class WebsiteBuilder:
         # Write all pages to parent directory
         output_files = []
         for page_name, page_html in pages.items():
-            output_file = Path(f"../{page_name}.html")
+            output_file = Path(f"../docs/{page_name}.html")
             with open(output_file, 'w') as f:
                 f.write(page_html)
             output_files.append(output_file)
