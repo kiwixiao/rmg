@@ -123,6 +123,9 @@ class WebsiteBuilder:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{current_page.title()} - {content["site"]["title"]}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/responsive.css">
@@ -168,12 +171,12 @@ class WebsiteBuilder:
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 {content["site"]["title"]}. All rights reserved.</p>
+                <p>&copy; 2025 {content["site"]["title"]}. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="scripts/main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>'''
         return header, footer
@@ -198,22 +201,22 @@ class WebsiteBuilder:
         <div class="container">
             <h2 class="section-title">Explore Our Expertise</h2>
             <div class="quick-links-grid">
-                <a href="services.html" class="quick-link-card">
+                <a href="services.html" class="quick-link-card" data-animate="fade-up" data-animate-delay="1">
                     <h3>Our Services</h3>
                     <p>Advanced respiratory engineering solutions</p>
                     <span class="arrow">→</span>
                 </a>
-                <a href="research.html" class="quick-link-card">
+                <a href="research.html" class="quick-link-card" data-animate="fade-up" data-animate-delay="2">
                     <h3>Research Publications</h3>
                     <p>Scientific contributions and peer-reviewed research</p>
                     <span class="arrow">→</span>
                 </a>
-                <a href="about.html" class="quick-link-card">
+                <a href="about.html" class="quick-link-card" data-animate="fade-up" data-animate-delay="3">
                     <h3>About Our Lab</h3>
                     <p>Leading CFD expertise in respiratory systems</p>
                     <span class="arrow">→</span>
                 </a>
-                <a href="contact.html" class="quick-link-card">
+                <a href="contact.html" class="quick-link-card" data-animate="fade-up" data-animate-delay="4">
                     <h3>Start Your Project</h3>
                     <p>Ready to optimize your respiratory system?</p>
                     <span class="arrow">→</span>
@@ -253,7 +256,7 @@ class WebsiteBuilder:
                 media_content = f'<div class="service-icon">{service["icon"]}</div>'
 
             service_html = f'''
-                <div class="service-card">
+                <div class="service-card" data-animate="fade-up">
                     {media_content}
                     <h3>{service["title"]}</h3>
                     <p>{service["description"]}</p>
@@ -290,7 +293,7 @@ class WebsiteBuilder:
         # Generate stats
         for stat in content["about"]["stats"]:
             html += f'''
-                        <div class="stat">
+                        <div class="stat" data-animate="fade-up">
                             <div class="stat-number">{stat["number"]}</div>
                             <div class="stat-label">{stat["label"]}</div>
                         </div>'''
@@ -388,7 +391,7 @@ class WebsiteBuilder:
                 categories_html += f'<span class="category-tag">{category}</span>'
             
             paper_html = f'''
-                <div class="research-paper">
+                <div class="research-paper" data-animate="fade-up">
                     <div class="paper-header">
                         <h3 class="paper-title">{paper["title"]}</h3>
                         <div class="paper-authors">{paper["authors"]}</div>

@@ -5,9 +5,10 @@
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: var(--font-body);
     line-height: var(--line-height-base);
-    color: var(--text-dark);
+    color: var(--text-primary);
+    background: var(--bg-primary);
 }
 
 html {
@@ -22,24 +23,33 @@ html {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
     font-weight: 600;
     line-height: 1.2;
     margin-bottom: var(--spacing-md);
+    color: var(--white);
+    letter-spacing: -0.02em;
 }
 
 h1 { font-size: 3.5rem; }
 h2 { font-size: 2.5rem; }
-h3 { font-size: 2rem; }
-h4 { font-size: 1.5rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
 
 p {
     margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
 }
 
 /* Links */
 a {
+    color: var(--accent);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: color var(--transition-base);
+}
+
+a:hover {
+    color: var(--accent-bright);
 }
 
 /* Buttons */
@@ -48,18 +58,20 @@ a {
     padding: 12px 30px;
     border: none;
     border-radius: var(--border-radius);
+    font-family: var(--font-body);
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
 }
 
 .btn-primary {
-    background: var(--primary-color);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--bg-primary);
 }
 
 .btn-primary:hover {
-    background: var(--secondary-color);
+    background: var(--accent-bright);
+    box-shadow: var(--shadow-glow);
 }
 
 /* Sections */
@@ -70,14 +82,38 @@ section {
 .section-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--text-dark);
+    margin-bottom: 1rem;
+    color: var(--white);
 }
 
 .section-subtitle {
     text-align: center;
     font-size: 1.1rem;
-    color: var(--text-light);
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto 4rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Selection */
+::selection {
+    background: var(--accent-glow);
+    color: var(--white);
 }

@@ -2,6 +2,7 @@
 import { Navigation } from './modules/navigation.js';
 import { SmoothScroll } from './modules/smooth-scroll.js';
 import { HeaderScroll } from './modules/header-scroll.js';
+import { Animations } from './modules/animations.js';
 
 class App {
     constructor() {
@@ -14,7 +15,8 @@ class App {
             new Navigation();
             new SmoothScroll();
             new HeaderScroll();
-            
+            new Animations();
+
             console.log('CFD Website loaded successfully');
         });
     }

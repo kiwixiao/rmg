@@ -1,11 +1,15 @@
-/* Mobile Responsiveness */
+/* Tablet: 768px */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
     }
-    
+
     .hamburger {
         display: flex;
+    }
+
+    .hero {
+        padding: 130px 0 60px;
     }
 
     .hero h1 {
@@ -16,40 +20,123 @@
         font-size: 1.1rem;
     }
 
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+    /* Quick Links */
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    /* Services */
+    .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .service-card {
+        height: auto;
+        min-height: 400px;
+    }
+
+    /* About */
     .about-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
     }
 
     .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Research */
+    .research-grid {
+        max-width: 100%;
+    }
+
+    .research-paper {
+        padding: var(--spacing-lg);
+    }
+
+    .paper-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    /* Contact */
+    .contact-content {
         grid-template-columns: 1fr;
     }
-    
-    .services-grid {
+
+    .contact-info {
+        order: -1;
+    }
+
+    /* Footer */
+    .footer-content {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        max-width: 400px;
     }
 }
 
+/* Mobile: 480px */
 @media (max-width: 480px) {
     .container {
         padding: 0 var(--spacing-md);
     }
-    
+
     nav {
         padding: 0 var(--spacing-md);
     }
-    
+
     .hero-content {
         padding: 0 var(--spacing-md);
     }
-    
+
     .hero h1 {
         font-size: 2rem;
     }
-    
+
+    .page-title {
+        font-size: 1.8rem;
+        padding-top: 40px;
+    }
+
     .section-title {
         font-size: 2rem;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        padding: var(--spacing-lg);
+        min-height: auto;
+    }
+
+    .service-video,
+    .service-image {
+        height: 220px;
+    }
+
+    .quick-link-card {
+        padding: var(--spacing-lg);
+    }
+
+    .research-paper {
+        padding: var(--spacing-md);
+    }
+
+    .paper-categories {
+        gap: var(--spacing-xs);
+    }
+
+    .category-tag {
+        font-size: 0.75rem;
+        padding: 3px 8px;
     }
 }
